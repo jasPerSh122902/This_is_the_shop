@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\the second project\\exersises\\Exersies-from-teacher\\This is the shop\\This is the shop\\This is the shop.csproj",
+      "projectUniqueName": "E:\\the second project\\exersises\\This_is_the_shop\\This is the shop\\This is the shop.csproj",
       "projectName": "This is the shop",
-      "projectPath": "E:\\the second project\\exersises\\Exersies-from-teacher\\This is the shop\\This is the shop\\This is the shop.csproj",
+      "projectPath": "E:\\the second project\\exersises\\This_is_the_shop\\This is the shop\\This is the shop.csproj",
       "packagesPath": "C:\\Users\\s218005\\.nuget\\packages\\",
-      "outputPath": "E:\\the second project\\exersises\\Exersies-from-teacher\\This is the shop\\This is the shop\\obj\\",
+      "outputPath": "E:\\the second project\\exersises\\This_is_the_shop\\This is the shop\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\s218005\\AppData\\Roaming\\NuGet\\NuGet.Config",
