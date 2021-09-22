@@ -49,12 +49,15 @@ namespace This_is_the_shop
 
         public void Start()
         {
-           
+            _gameOver = false;
+            _player = new Player();
+            InitializeItems();
+            
         }
 
         public void Update()
         {
-            DisplayShopMenu();
+            DisplayCurrentScene();
         }
 
        public int GetInput(string description, params string[] options)
@@ -106,12 +109,12 @@ namespace This_is_the_shop
 
         public void InitializeItems()
         {
-            Item bigGun = new Item { Name = "Big Gun", Gold = 15 };
-            Item bigShield = new Item { Name = "Big Shield", Gold = 18 };
+            Item bigGun = new Item { Name = " Big Gun ", Gold = 15 };
+            Item bigShield = new Item { Name = " Big Shield ", Gold = 18 };
 
             //Raider items
-            Item bigAxe = new Item { Name = "Big Axe ", Gold = 12 };
-            Item forceShield = new Item { Name = "Force Shield ", Gold = 10 };
+            Item bigAxe = new Item { Name = " Big Axe ", Gold = 12 };
+            Item forceShield = new Item { Name = " Force Shield ", Gold = 10 };
 
             _items = new Item[] { bigGun, bigShield, bigAxe, forceShield };
             _shop = new Shop(_items);
@@ -165,11 +168,11 @@ namespace This_is_the_shop
         public void DisplayShopMenu()
         {
             //prints to player the gold they have and the lines needed but i am trying a getInput for this
-           // int choice = GetInput("You got" + _player.Gold() + "Gold Left. " + "Hay what you buyin smooth scking", GetShopMenuOptions(_items));
+            int choice = GetInput("You got" + _player.Gold() + "Gold Left. " + "Hay what you buyin smooth scking", GetShopMenuOptions(_items), "Save", "Leave");
 
-            Console.WriteLine("You got " + _player.Gold() + "Gold Left. ");
+            Console.WriteLine(" You got " + _player.Gold() + " Gold Left. ");
             InitializeItems();
-            Console.WriteLine("Hay what you buyin smooth scking");
+            Console.WriteLine(" Hay what you buyin smooth scking ");
             GetShopMenuOptions(_items);
             Console.WriteLine("4. I will save the current game! ");
             Console.WriteLine("5. I will leave the current game!");
@@ -233,7 +236,7 @@ namespace This_is_the_shop
 
             input = Console.Read();
 
-            int playerIndex = -1;
+            int playerIndex = 0;
 
             switch (input)
             {
@@ -256,6 +259,9 @@ namespace This_is_the_shop
                     {
                         return;
                     }
+
+                    Console.Clear();
+                    _shop.Sell(_player, itemIndex, playerIndex);
             }
 
         }

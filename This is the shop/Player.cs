@@ -9,16 +9,17 @@ namespace This_is_the_shop
 
     class Player
     {
-        private string _player = "nothing";
+        private string _player;
         private int _gold;
         public int Gold()
         {
- 
                 return _gold;
-            
         }
+
         private Item[] _items;
+
         private Item[] _inventory;
+
         public Item[] Currentinventory()
         {
             return _inventory;
@@ -41,6 +42,7 @@ namespace This_is_the_shop
 
         public Player()
         {
+            _player = "Rob";
             _gold = 1000;
             _inventory = new Item[4];
             
