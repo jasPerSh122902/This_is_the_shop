@@ -8,7 +8,7 @@ namespace This_is_the_shop
     public struct Item
     {
         public string Name;
-        public float Gold;
+        public int Gold;
 
     }
 
@@ -24,25 +24,37 @@ namespace This_is_the_shop
 
     class Game
     {
-        private bool _gameOver;
+        private bool _gameOver = false;
         private Player _player;
         private Shop _playerGold;
         private Scene _currentScene;
         private Shop _shop;
         private Item[] _items;
+
         public void Run()
+        {
+            Start();
+
+            while (_gameOver == false)
+            {
+                Update();
+            }
+            End();
+        }
+
+        public void End()
         {
 
         }
 
         public void Start()
         {
-
+           
         }
 
         public void Update()
         {
-
+            DisplayShopMenu();
         }
 
        public int GetInput(string description, params string[] options)
@@ -118,7 +130,7 @@ namespace This_is_the_shop
                     
                     break;
                 case Scene.GETSHOPMENUOPTIONS:
-                    GetShopMenuOptions();
+                    GetShopMenuOptions(_items);
                     
                    
                     break;
@@ -139,62 +151,116 @@ namespace This_is_the_shop
             }
         }
 
-        public void DisplayShopMenu()
+        private void GetShopMenuOptions(Item[] items)
         {
-
-            int choice = GetInput("ow! What you want in the shop", GetShopMenuOptions(!int.TryParse(Console.ReadLine(), out 
-
-        }
-        private int GetShopMenuOptions(params string[] options)
-        { 
 
             for (int i = 0; i < _items.Length; i++)
             {
                 Console.WriteLine((i + 1) + _items[i].Name + _items[i].Gold);
             }
 
-            return _items.Length;
-           
+
         }
 
-
-        public void Save()
+        public void DisplayShopMenu()
         {
+            //prints to player the gold they have and the lines needed but i am trying a getInput for this
+           // int choice = GetInput("You got" + _player.Gold() + "Gold Left. " + "Hay what you buyin smooth scking", GetShopMenuOptions(_items));
 
-            //create a new stream below
-            StreamWriter writer = new StreamWriter("SaveData.txt");
+            Console.WriteLine("You got " + _player.Gold() + "Gold Left. ");
+            InitializeItems();
+            Console.WriteLine("Hay what you buyin smooth scking");
+            GetShopMenuOptions(_items);
+            Console.WriteLine("4. I will save the current game! ");
+            Console.WriteLine("5. I will leave the current game!");
 
-            //saves player...
-            _player.Save(writer);
+            int input = Console.Read();
 
-            //closes the writer when done saving.
-            writer.Close();
+            int itemIndex = -1;
+
+            switch (input)
+            {
+                case 1:
+                    //needed to state the itemIndex becasue start is -1
+                    itemIndex = 0;
+                    Console.WriteLine("You have bought a BIG GUN!!! good Luck");
+                    Console.ReadKey(true);
+                    Console.Clear();
+                    break;
+                case 2:
+                    //same thing that is in each case
+                    itemIndex = 1;
+                    Console.WriteLine("Hahahah you bought a BIG SHIELD why you do that.");
+                    Console.ReadKey(true);
+                    Console.Clear();
+                    break;
+                case 3:
+                    itemIndex = 2;
+                    Console.WriteLine("YOU HAVE BOUGHT THE BIG AXE GOOD AXE GO BREEEE!!");
+                    Console.ReadKey(true);
+                    Console.Clear();
+                    break;
+                case 4:
+                    itemIndex = 3;
+                    Console.WriteLine("FORCE SHIELD do i need to say more!");
+                    Console.ReadKey(true);
+                    Console.Clear();
+                    break;
+
+                case 5:
+                    
+                    Console.WriteLine("Alright then! you saved congrats!");
+                    Console.ReadKey(true);
+                    Console.Clear();
+                    return;
+                case 6:
+                    Console.WriteLine("Leave but do not forget by wears!");
+                    Console.ReadKey(true);
+                    Console.Clear();
+                    _gameOver = true;
+                    return;
+                default:
+                    Console.Clear();
+                    return;
+            }
+            if (_player.Gold() < _items[itemIndex].Gold)
+            {
+                Console.WriteLine("You can't afford this.");
+                return;
+            }
+
+            GetShopMenuOptions(_player.Currentinventory());
+
+            input = Console.Read();
+
+            int playerIndex = -1;
+
+            switch (input)
+            {
+                case 1:
+                    {
+                        playerIndex = 0;
+                        break;
+                    }
+                case 2:
+                    {
+                        playerIndex = 1;
+                        break;
+                    }
+                case 3:
+                    {
+                        playerIndex = 2;
+                        break;
+                    }
+                default:
+                    {
+                        return;
+                    }
+            }
+
         }
 
-        public bool Load()
-        {
-            bool loadSuccessful = true;
 
-
-            //figures out if file exists...
-            if (!File.Exists("SaveData.txt"))
-                //returns false
-                loadSuccessful = false;
-
-            //creas a new reader to read from the text file
-            StreamReader reader = new StreamReader("SaveData.txt");
-
-
-            if (!_player.Load(reader))
-                loadSuccessful = false;
-
-            _currentScene = Scene.GETSHOPMENUOPTIONS;
-
-            //make the reader cloase when finished
-            reader.Close();
-
-            return loadSuccessful;
-        }
 
     }
 }

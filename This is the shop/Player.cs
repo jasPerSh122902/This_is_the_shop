@@ -9,27 +9,41 @@ namespace This_is_the_shop
 
     class Player
     {
-        private Shop _gold;
+        private string _player = "nothing";
+        private int _gold;
+        public int Gold()
+        {
+ 
+                return _gold;
+            
+        }
         private Item[] _items;
-        private Item _inventory;
+        private Item[] _inventory;
+        public Item[] Currentinventory()
+        {
+            return _inventory;
+        }
       
 
  
 
-        public void Buy(Item itemBuy, int Item)
+        public bool Buy(Item itemBuy, int Item)
         {
-            //this keeps tabs on the item and the index(or were it is at in the index)...
-            if (_inventory = _items.Length)
-                
-            _inventory = _items;
-            //then sets item
+            if(_gold >= itemBuy.Gold)
+            {
+                _gold -= itemBuy.Gold;
 
+                _inventory[Item] = itemBuy;
+                return true;
+            }
+            return false;
         }
 
-        public Player(int Gold)
+        public Player()
         {
-            _items = new Item[0];
-            _inventory.Name = "Nothing";
+            _gold = 1000;
+            _inventory = new Item[4];
+            
         }
 
 
@@ -46,28 +60,6 @@ namespace This_is_the_shop
             return itemNames;
         }
 
-        public override void Save(StreamWriter writer)
-        {
-            writer.WriteLine(_job);
-            base.Save(writer);
-            writer.WriteLine(_inventory);
-        }
-
-        public override bool Load(StreamReader reader)
-        {
-            //if the base loading function dos not load return false..
-            if (!base.Load(reader))
-                return false;
-
-            //if the loading function works then gos to CurrentItemIndex if that dos not load return false...
-            if (!int.TryParse(reader.ReadLine(), out _inventory)
-                return false;
-
-
-            //then return the Item Index wether the top two were successful.
-            //This one returns wether the item was equipped or not.
-            return TryEquipItem(_inventory);
-        }
 
     }
 }

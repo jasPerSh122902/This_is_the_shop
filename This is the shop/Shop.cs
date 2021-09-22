@@ -7,7 +7,7 @@ namespace This_is_the_shop
     class Shop
     {
         private Item[] _inventory;
-        public float _gold;
+        public int _gold;
 
  
     public Shop()
@@ -34,21 +34,9 @@ namespace This_is_the_shop
                 _gold += itemBuy.Gold;
                 return true;
             }
+            return false;
         }
 
-        public string GetItemNames(string[])//do not know what it means my identifier needed.
-        {
-            string[] itemNames = new string[_inventory.Length];
-
-            for (int i = 0; i < _inventory.Length; i++)
-            {
-                itemNames[i] = _inventory[i].Name;
-            }
-
-            //do not know how
-            return itemNames;
-        }
-       
 
     }
 }

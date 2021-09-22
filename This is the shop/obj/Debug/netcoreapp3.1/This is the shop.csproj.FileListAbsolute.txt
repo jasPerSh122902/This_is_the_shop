@@ -1,3 +1,11 @@
 E:\the second project\exersises\This_is_the_shop\This is the shop\obj\Debug\netcoreapp3.1\This is the shop.csprojAssemblyReference.cache
 E:\the second project\exersises\This_is_the_shop\This is the shop\obj\Debug\netcoreapp3.1\This is the shop.AssemblyInfoInputs.cache
 E:\the second project\exersises\This_is_the_shop\This is the shop\obj\Debug\netcoreapp3.1\This is the shop.AssemblyInfo.cs
+E:\the second project\exersises\This_is_the_shop\This is the shop\bin\Debug\netcoreapp3.1\This is the shop.exe
+E:\the second project\exersises\This_is_the_shop\This is the shop\bin\Debug\netcoreapp3.1\This is the shop.deps.json
+E:\the second project\exersises\This_is_the_shop\This is the shop\bin\Debug\netcoreapp3.1\This is the shop.runtimeconfig.json
+E:\the second project\exersises\This_is_the_shop\This is the shop\bin\Debug\netcoreapp3.1\This is the shop.runtimeconfig.dev.json
+E:\the second project\exersises\This_is_the_shop\This is the shop\bin\Debug\netcoreapp3.1\This is the shop.dll
+E:\the second project\exersises\This_is_the_shop\This is the shop\bin\Debug\netcoreapp3.1\This is the shop.pdb
+E:\the second project\exersises\This_is_the_shop\This is the shop\obj\Debug\netcoreapp3.1\This is the shop.dll
+E:\the second project\exersises\This_is_the_shop\This is the shop\obj\Debug\netcoreapp3.1\This is the shop.pdb
